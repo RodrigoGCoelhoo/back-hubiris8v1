@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "npx nodemon server/server.js -w server ",
-    "start": "node server"
+    "start": "node server/server"
   },
   "keywords": [],
   "author": "",
