@@ -43,6 +43,7 @@ router.get("/statusfiles/:id", async (req, res, next) => {
 });
 
 router.get("/statuspc", async (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
     try{
         let results = await db.statusPC();
         res.json(results);
@@ -53,6 +54,7 @@ router.get("/statuspc", async (req, res, next) => {
 });
 
 router.get("/statuspc/:id", async (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
     try{
         let results = await db.statusPCID(req.params.id);
         res.json(results);
