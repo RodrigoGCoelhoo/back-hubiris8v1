@@ -1,4 +1,5 @@
 const mysql = require("mysql");
+var sql = require("mssql")
 
 const pool = mysql.createPool({
     connectionLimit:10,
@@ -8,8 +9,41 @@ const pool = mysql.createPool({
     database: "hubiris8",
 })
 
+var configSQL = {
+   user: 'iris8admin',
+   password: 'Ccxp6749@_',
+   server: 'iris8server.database.windows.net', 
+   database: 'IrisDatabase' 
+};
 
 let hubDB = {};
+
+hubDB.listaclientes = () => {
+
+   return new Promise((resolve, reject) => {
+      sql.connect(configSQL)
+         .then(() => {
+      return sql.query`select * from HRS_CLIENTEUNIDADE`})
+      .then(result => {
+         return resolve(result.recordset)})
+      .catch(err => {
+         console.log(err)})
+      })
+   }
+
+hubDB.listaclientesip = () => {
+
+   return new Promise((resolve, reject) => {
+      sql.connect(configSQL)
+         .then(() => {
+      return sql.query`select * from HRS_CLIENTEUNIDADEENDERECO`})
+      .then(result => {
+         return resolve(result.recordset)})
+      .catch(err => {
+         console.log(err)})
+      })
+   }
+
 
 hubDB.shoppings = () => {
     return new Promise((resolve, reject) => {
