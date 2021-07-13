@@ -18,7 +18,20 @@ var configSQL = {
 
 let hubDB = {};
 
-hubDB.listaclientes = () => {
+hubDB.clientes = () => {
+
+   return new Promise((resolve, reject) => {
+      sql.connect(configSQL)
+         .then(() => {
+      return sql.query`select * from HRS_CLIENTE`})
+      .then(result => {
+         return resolve(result.recordset)})
+      .catch(err => {
+         console.log(err)})
+      })
+   }
+
+hubDB.clientesunidades = () => {
 
    return new Promise((resolve, reject) => {
       sql.connect(configSQL)
@@ -31,7 +44,7 @@ hubDB.listaclientes = () => {
       })
    }
 
-hubDB.listaclientesip = () => {
+hubDB.clientesunidadesip = () => {
 
    return new Promise((resolve, reject) => {
       sql.connect(configSQL)

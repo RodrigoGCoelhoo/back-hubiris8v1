@@ -112,10 +112,10 @@ router.get("/tamanhofiles/:id", async (req, res, next) => {
     }
 });
 
-router.get("/listaclientes", async (req, res, next) => {
+router.get("/clientes", async (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     try{
-        let results = await db.listaclientes();
+        let results = await db.clientes();
         res.json(results);
     } catch(e) {
         console.log(e);
@@ -123,10 +123,21 @@ router.get("/listaclientes", async (req, res, next) => {
     }
 });
 
-router.get("/listaclientesip", async (req, res, next) => {
+router.get("/clientesunidades", async (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     try{
-        let results = await db.listaclientesip();
+        let results = await db.clientesunidades();
+        res.json(results);
+    } catch(e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
+router.get("/clientesunidadesip", async (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    try{
+        let results = await db.clientesunidadesip();
         res.json(results);
     } catch(e) {
         console.log(e);
