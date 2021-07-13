@@ -3,7 +3,7 @@ const mysql = require("mysql");
 const pool = mysql.createPool({
     connectionLimit:10,
     host: "mysql.hubiris8.kinghost.net",
-    user: "hubiris8_add4",
+    user: "hubiris8_add6",
     password: "rodrigo2021",
     database: "hubiris8",
 })
