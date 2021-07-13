@@ -13,13 +13,12 @@ var configSQL = {
    user: 'iris8admin',
    password: 'Ccxp6749@_',
    server: 'iris8server.database.windows.net', 
-   database: 'IrisDatabase',
-   requestTimeout: 60000
+   database: 'IrisDatabase'
 };
 
 let hubDB = {};
 
-hubDB.clientes = () => {
+hubDB.clientes = async () => {
 
    return new Promise((resolve, reject) => {
       sql.connect(configSQL)
@@ -32,7 +31,7 @@ hubDB.clientes = () => {
       })
    }
 
-hubDB.clientesunidades = () => {
+hubDB.clientesunidades = async () => {
 
    return new Promise((resolve, reject) => {
       sql.connect(configSQL)
@@ -45,7 +44,7 @@ hubDB.clientesunidades = () => {
       })
    }
 
-hubDB.clientesunidadesip = () => {
+hubDB.clientesunidadesip = async () => {
 
    return new Promise((resolve, reject) => {
       sql.connect(configSQL)
@@ -57,18 +56,6 @@ hubDB.clientesunidadesip = () => {
          console.log(err)})
       })
    }
-
-
-hubDB.shoppings = () => {
-    return new Promise((resolve, reject) => {
-         pool.query("SELECT * FROM Shoppings", (err, results) => {
-            if(err){
-                return reject(err);
-            }
-            return resolve(results);
-         });
-    });
- };
 
  hubDB.shoppingsID = (id) => {
     return new Promise((resolve, reject) => {
