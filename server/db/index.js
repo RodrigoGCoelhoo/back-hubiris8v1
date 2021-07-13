@@ -13,7 +13,8 @@ var configSQL = {
    user: 'iris8admin',
    password: 'Ccxp6749@_',
    server: 'iris8server.database.windows.net', 
-   database: 'IrisDatabase' 
+   database: 'IrisDatabase',
+   requestTimeout: 60000
 };
 
 let hubDB = {};
