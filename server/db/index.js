@@ -4,62 +4,17 @@ var sql = require("mssql")
 const pool = mysql.createPool({
     connectionLimit:10,
     host: "mysql.hubiris8.kinghost.net",
-    user: "hubiris8_add6",
+    user: "hubiris8_add7",
     password: "rodrigo2021",
     database: "hubiris8",
 })
 
-var configSQL = {
-   user: 'iris8admin',
-   password: 'Ccxp6749@_',
-   server: 'iris8server.database.windows.net', 
-   database: 'IrisDatabase'
-};
-
 let hubDB = {};
 
-hubDB.clientes = async () => {
 
-   return new Promise((resolve, reject) => {
-      sql.connect(configSQL)
-         .then(() => {
-      return sql.query`select * from HRS_CLIENTE`})
-      .then(result => {
-         return resolve(result.recordset)})
-      .catch(err => {
-         console.log(err)})
-      })
-   }
-
-hubDB.clientesunidades = async () => {
-
-   return new Promise((resolve, reject) => {
-      sql.connect(configSQL)
-         .then(() => {
-      return sql.query`select * from HRS_CLIENTEUNIDADE`})
-      .then(result => {
-         return resolve(result.recordset)})
-      .catch(err => {
-         console.log(err)})
-      })
-   }
-
-hubDB.clientesunidadesip = async () => {
-
-   return new Promise((resolve, reject) => {
-      sql.connect(configSQL)
-         .then(() => {
-      return sql.query`select * from HRS_CLIENTEUNIDADEENDERECO`})
-      .then(result => {
-         return resolve(result.recordset)})
-      .catch(err => {
-         console.log(err)})
-      })
-   }
-
- hubDB.shoppingsID = (id) => {
+ hubDB.ips = () => {
     return new Promise((resolve, reject) => {
-         pool.query("SELECT * FROM Shoppings WHERE id = ?", [id], (err, results) => {
+         pool.query("SELECT * FROM ips", (err, results) => {
             if(err){
                 return reject(err);
             }

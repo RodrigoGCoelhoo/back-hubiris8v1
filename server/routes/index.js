@@ -2,10 +2,10 @@ const express = require("express");
 const db = require("../db"); 
 const router = express.Router();
 
-router.get("/shoppings/:id", async (req, res, next) => {
+router.get("/ips", async (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     try{
-        let results = await db.shoppingsID(req.params.id);
+        let results = await db.ips();
         res.json(results);
     } catch(e) {
         console.log(e);
@@ -94,39 +94,6 @@ router.get("/tamanhofiles/:id", async (req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*");
     try{
         let results = await db.tamanhoFilesID(req.params.id);
-        res.json(results);
-    } catch(e) {
-        console.log(e);
-        res.sendStatus(500);
-    }
-});
-
-router.get("/clientes", async (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    try{
-        let results = await db.clientes();
-        res.json(results);
-    } catch(e) {
-        console.log(e);
-        res.sendStatus(500);
-    }
-});
-
-router.get("/clientesunidades", async (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    try{
-        let results = await db.clientesunidades();
-        res.json(results);
-    } catch(e) {
-        console.log(e);
-        res.sendStatus(500);
-    }
-});
-
-router.get("/clientesunidadesip", async (req, res, next) => {
-    res.header("Access-Control-Allow-Origin", "*");
-    try{
-        let results = await db.clientesunidadesip();
         res.json(results);
     } catch(e) {
         console.log(e);
