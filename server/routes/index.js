@@ -101,5 +101,27 @@ router.get("/tamanhofiles/:id", async (req, res, next) => {
     }
 });
 
+router.get("/wrongcapturewindow", async (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    try{
+        let results = await db.wrongCaptureWindow();
+        res.json(results);
+    } catch(e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
+router.get("/wrongcapturewindow/:id", async (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    try{
+        let results = await db.wrongCaptureWindowID(req.params.id);
+        res.json(results);
+    } catch(e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
 
 module.exports = router;

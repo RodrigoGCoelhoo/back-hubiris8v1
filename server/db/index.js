@@ -111,6 +111,28 @@ hubDB.statusPC = () => {
     });
  };
 
+ hubDB.wrongCaptureWindow = () => {
+   return new Promise((resolve, reject) => {
+        pool.query("SELECT * FROM StatusCaptureWindow", (err, results) => {
+           if(err){
+               return reject(err);
+           }
+           return resolve(results);
+        });
+   });
+};
+
+hubDB.wrongCaptureWindowID = (id) => {
+   return new Promise((resolve, reject) => {
+        pool.query("SELECT * FROM StatusCaptureWindow WHERE id = ?", [id], (err, results) => {
+           if(err){
+               return reject(err);
+           }
+           return resolve(results);
+        });
+   });
+};
+
 
 
  module.exports = hubDB;
