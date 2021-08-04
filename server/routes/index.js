@@ -123,5 +123,27 @@ router.get("/wrongcapturewindow/:id", async (req, res, next) => {
     }
 });
 
+router.get("/imgstatus", async (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    try{
+        let results = await db.imgStatus();
+        res.json(results);
+    } catch(e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
+router.get("/imgstatus/:id", async (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    try{
+        let results = await db.imgStatusID(req.params.id);
+        res.json(results);
+    } catch(e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
 
 module.exports = router;

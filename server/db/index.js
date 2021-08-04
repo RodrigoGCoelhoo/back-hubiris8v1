@@ -133,6 +133,28 @@ hubDB.wrongCaptureWindowID = (id) => {
    });
 };
 
+hubDB.imgStatus = () => {
+   return new Promise((resolve, reject) => {
+        pool.query("SELECT * FROM StatusImages", (err, results) => {
+           if(err){
+               return reject(err);
+           }
+           return resolve(results);
+        });
+   });
+};
+
+hubDB.imgStatusID = (id) => {
+   return new Promise((resolve, reject) => {
+        pool.query("SELECT * FROM StatusImages WHERE id = ?", [id], (err, results) => {
+           if(err){
+               return reject(err);
+           }
+           return resolve(results);
+        });
+   });
+};
+
 
 
  module.exports = hubDB;
