@@ -145,5 +145,27 @@ router.get("/imgstatus/:id", async (req, res, next) => {
     }
 });
 
+router.get("/healthHorus", async (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    try{
+        let results = await db.healthHorus();
+        res.json(results);
+    } catch(e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
+router.get("/healthHorus/:id", async (req, res, next) => {
+    res.header("Access-Control-Allow-Origin", "*");
+    try{
+        let results = await db.healthHorus(req.params.id);
+        res.json(results);
+    } catch(e) {
+        console.log(e);
+        res.sendStatus(500);
+    }
+});
+
 
 module.exports = router;

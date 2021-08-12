@@ -155,6 +155,28 @@ hubDB.imgStatusID = (id) => {
    });
 };
 
+hubDB.healthHorus = () => {
+   return new Promise((resolve, reject) => {
+        pool.query("SELECT * FROM healthHorus", (err, results) => {
+           if(err){
+               return reject(err);
+           }
+           return resolve(results);
+        });
+   });
+};
+
+hubDB.healthHorusID = (id) => {
+   return new Promise((resolve, reject) => {
+        pool.query("SELECT * FROM healthHorus WHERE id = ?", [id], (err, results) => {
+           if(err){
+               return reject(err);
+           }
+           return resolve(results);
+        });
+   });
+};
+
 
 
  module.exports = hubDB;
